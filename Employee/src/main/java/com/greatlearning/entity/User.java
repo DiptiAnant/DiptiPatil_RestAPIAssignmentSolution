@@ -20,21 +20,26 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 public class User {
-
 	@Id
 	@GeneratedValue
-
 	@Column(name = "user_id")
-	private int id;
+	private long id;
 
 	@Column(name = "username")
 	private String username;
 
-	public int getId() {
+	@Column(name = "password")
+	private String password;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private List<Role> roles = new ArrayList<Role>();
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -61,13 +66,6 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
-	@Column(name = "password")
-	private String password;
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles = new ArrayList<Role>();
-
+	
+	
 }
-

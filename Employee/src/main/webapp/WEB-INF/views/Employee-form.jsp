@@ -35,7 +35,7 @@
 
 			<div class="form-inline">
 				<input type="text" name="firstName" value="${Employee.firstName}"
-					class="form-control mb-4 col-4" placeholder="FristName">
+					class="form-control mb-4 col-4" placeholder="FirstName">
 
 
 
@@ -52,16 +52,8 @@
 
 			<div class="form-inline">
 
-				<input type="text" name="course" value="${Employee.course}"
-					class="form-control mb-4 col-4" placeholder="Course">
-
-
-
-			</div>
-			<div class="form-inline">
-
-				<input type="text" name="country" value="${Employee.country}"
-					class="form-control mb-4 col-4" placeholder="Country">
+				<input type="text" name="email" value="${Employee.email}"
+					class="form-control mb-4 col-4" placeholder="email">
 
 
 

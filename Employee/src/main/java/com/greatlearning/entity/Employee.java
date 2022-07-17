@@ -12,19 +12,35 @@ import lombok.Data;
 @Entity
 @Table(name = "employee")
 public class Employee {
-	
+
 	@Id
 	@GeneratedValue
-	
+
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "firstName")
 	private String firstName;
-	
+
 	@Column(name = "lastName")
 	private String lastName;
-	
+
+	@Column(name = "email")
+	private String email;
+
+
+	public Employee() {
+
+	}
+
+	public Employee(String firstName, String lastName,String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email=email;
+
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -45,45 +61,16 @@ public class Employee {
 		return lastName;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public String getCourse() {
-		return course;
-	}
-
-	public void setCourse(String course) {
-		this.course = course;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	@Column(name = "course")
-	private String course;
-	
-	@Column(name = "country")
-	private String country;
-	
-	public Employee() {
-		
-	}
-
-	public Employee(String firstName, String lastName, String course, String country) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.course = course;
-		this.country = country;
-	}
-	
-	
-
 }
-

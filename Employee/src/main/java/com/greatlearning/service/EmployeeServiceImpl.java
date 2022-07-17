@@ -1,6 +1,8 @@
 package com.greatlearning.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> findAll() {
 		// TODO Auto-generated method stub
-		return employeeRepository.findAll();
+		
+		//List<Employee> employees = new ArrayList<Employee>();
+		
+		return employeeRepository.findAll().stream().sorted((e1, e2)->e1.getFirstName().compareTo(e2.getFirstName())).collect(Collectors.toList());
+		
+		
+		
+		//return employeeRepository.findAll();
 	}
 
 	@Override

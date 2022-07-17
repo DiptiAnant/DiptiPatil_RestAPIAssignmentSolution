@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,7 @@ public class EmployeeController {
 
 		model.addAttribute("Employee", employee);
 
-		return "list-employee";
+		return "list-Employee";
 	}
 
 	@RequestMapping("/showFormForAdd")
@@ -39,7 +40,7 @@ public class EmployeeController {
 	}
 
 	@RequestMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("EmployeeId") int id, Model model) {
+	public String showFormForUpdate(@RequestParam("id") int id, Model model) {
 
 		Employee employee = employeeServiceImpl.findById(id);
 
@@ -48,10 +49,9 @@ public class EmployeeController {
 		return "Employee-form";
 	}
 
-	@RequestMapping("/save")
+	@PostMapping("/save")
 	public String save(@RequestParam("id") int id, @RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName, @RequestParam("course") String course,
-			@RequestParam("country") String country) {
+			@RequestParam("lastName") String lastName, @RequestParam("email") String email) {
 
 		Employee employee;
 
@@ -59,12 +59,11 @@ public class EmployeeController {
 			employee = employeeServiceImpl.findById(id);
 			employee.setFirstName(firstName);
 			employee.setLastName(lastName);
-			employee.setCourse(course);
-			employee.setCountry(country);
+			employee.setEmail(email);
 
 		} else {
 
-			employee = new Employee(firstName, lastName, course, country);
+			employee = new Employee(firstName, lastName, email);
 
 		}
 

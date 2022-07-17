@@ -44,15 +44,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-		.antMatchers("/", "student/save", "/student/showFormForAdd", "/student/403").hasAnyAuthority("USER", "ADMIN")
-		.antMatchers("/student/showFormForUpdate", "/student/delete").hasAnyAuthority("ADMIN")
+		.antMatchers("/", "employee/save", "/employee/showFormForAdd", "/employee/403").hasAnyAuthority("USER", "ADMIN")
+		.antMatchers("/employee/showFormForUpdate", "/employee/delete").hasAnyAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
-		.formLogin().loginProcessingUrl("/login").successForwardUrl("/student/list").permitAll()
+		.formLogin().loginProcessingUrl("/login").successForwardUrl("/employee/list").permitAll()
 		.and()
 		.logout().logoutSuccessUrl("/login").permitAll()
 		.and()
-		.exceptionHandling().accessDeniedPage("/student/403")
+		.exceptionHandling().accessDeniedPage("/employee/403")
 		.and()
 		.cors().and().csrf().disable();
 		

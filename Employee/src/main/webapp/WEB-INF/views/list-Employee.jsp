@@ -32,7 +32,7 @@
 
 			<!-- Add a button -->
 			<a href="/Employee/employee/showFormForAdd"
-				class="btn btn-primary btn-sm mb-3"> Add Student </a> 
+				class="btn btn-primary btn-sm mb-3"> Add Employee </a> 
 			<a href="/Employee/logout" 
 					class="btn btn-primary btn-sm mb-3 mx-auto"> Logout </a> 
 
@@ -45,8 +45,7 @@
 				<tr>
 					<th>FirstName</th>
 					<th>LastName</th>
-					<th>Course</th>
-					<th>Country</th>
+					<th>email</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -56,11 +55,10 @@
 					<tr>
 						<td><c:out value="${tempEmployee.firstName}" /></td>
 						<td><c:out value="${tempEmployee.lastName}" /></td>
-						<td><c:out value="${tempEmployee.course}" /></td>
-						<td><c:out value="${tempEmployee.country}" /></td>
+						<td><c:out value="${tempEmployee.email}" /></td>
 						<td>
 							<!-- Add "update" button/link --> <a
-							href="/Employee/employee/showFormForUpdate?employeeId=${tempEmployee.id}"
+							href="/Employee/employee/showFormForUpdate?id=${tempEmployee.id}"
 							class="btn btn-info btn-sm"> Update </a> <!-- Add "delete" button/link -->
 							<a href="/Employee/employee/delete?employeeId=${tempEmployee.id}"
 							class="btn btn-danger btn-sm"
